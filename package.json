@@ -1,0 +1,29 @@
+{
+  "name": "authentication-service",
+  "version": "1.0.0",
+  "description": "The idea of this service is to simply validate   jwt tokens and learn more about the process.   We will be using this [RFC](https://datatracker.ietf.org/doc/html/rfc7519) as a reference and also this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the tokens accordingly",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandreResende/authentication-service.git"
+  },
+  "keywords": [
+    "authentication",
+    "microservices",
+    "nodejs",
+    "jwt"
+  ],
+  "author": "Alexandre Resende",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexandreResende/authentication-service/issues"
+  },
+  "homepage": "https://github.com/AlexandreResende/authentication-service#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
