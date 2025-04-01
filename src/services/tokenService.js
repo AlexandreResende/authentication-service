@@ -4,7 +4,7 @@ const { TOKEN } = require('../environments');
 class TokenService {
   validate(token) {
     try {
-      const data = jwt.verify(token, TOKEN.PRIVATE_KEY);
+      const data = jwt.verify(token, TOKEN.SECRET);
 
       return data;
     } catch (err) {
