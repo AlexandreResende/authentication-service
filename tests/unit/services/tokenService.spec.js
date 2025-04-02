@@ -23,15 +23,31 @@ describe('Token service', function() {
 
     });
 
-    it('decrypt a valid token', function() {
+    it('throws an error with an expired token', function() {
       const tokenService = new TokenService();
 
-      const token = tokenService.validate('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik96U01qb29ibG0iLCJhZ2UiOjIzLCJjYXRlZ29yeSI6InVzZXIiLCJpYXQiOjE3NDM0NzMzOTcsImV4cCI6MTc0MzQ3Njk5N30.zYkPzWg_lV9rWorWkZOOZRubL4cv45B0m5z7PJsd8k0');
+      try {
+        tokenService.validate('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik96U01qb29ibG0iLCJhZ2UiOjIzLCJjYXRlZ29yeSI6InVzZXIiLCJpYXQiOjE3NDM0NzMzOTcsImV4cCI6MTc0MzQ3Njk5N30.zYkPzWg_lV9rWorWkZOOZRubL4cv45B0m5z7PJsd8k0')
+      } catch (err) {
+        expect(err.message).to.be.equal('TokenExpiredError: jwt expired');
+      }
+    });
 
-      expect(typeof token).to.be.equal('object');
-      expect(token.username).to.be.equal('OzSMjooblm');
-      expect(token.age).to.be.equal(23);
-      expect(token.category).to.be.equal('user');
+    it('decrypt a valid token', function() {
+      const tokenService = new TokenService();
+      const data = {
+        username: 'OzSMjooblm',
+        age: 23,
+        category: 'user',
+      };
+
+      const token = tokenService.generate(data);
+      const tokenData = tokenService.validate(token);
+
+      expect(typeof tokenData).to.be.equal('object');
+      expect(tokenData.username).to.be.equal('OzSMjooblm');
+      expect(tokenData.age).to.be.equal(23);
+      expect(tokenData.category).to.be.equal('user');
     });
   });
 
