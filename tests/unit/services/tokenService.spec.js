@@ -1,4 +1,5 @@
 const chai = require('chai');
+const { faker } = require('@faker-js/faker');
 
 const TokenService = require('../../../src/services/tokenService');
 
@@ -36,8 +37,8 @@ describe('Token service', function() {
     it('decrypt a valid token', function() {
       const tokenService = new TokenService();
       const data = {
-        username: 'OzSMjooblm',
-        age: 23,
+        username: faker.internet.username(),
+        age: faker.number.int({ min: 18, max: 99 }),
         category: 'user',
       };
 
@@ -45,9 +46,9 @@ describe('Token service', function() {
       const tokenData = tokenService.validate(token);
 
       expect(typeof tokenData).to.be.equal('object');
-      expect(tokenData.username).to.be.equal('OzSMjooblm');
-      expect(tokenData.age).to.be.equal(23);
-      expect(tokenData.category).to.be.equal('user');
+      expect(tokenData.username).to.be.equal(data.username);
+      expect(tokenData.age).to.be.equal(data.age);
+      expect(tokenData.category).to.be.equal(data.category);
     });
   });
 
@@ -55,8 +56,8 @@ describe('Token service', function() {
     it('generates a jwt token', function() {
       const tokenService = new TokenService();
       const data = {
-        username: 'OzSMjooblm',
-        age: 23,
+        username: faker.internet.username(),
+        age: faker.number.int({ min: 18, max: 99 }),
         category: 'user',
       };
 
