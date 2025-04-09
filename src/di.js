@@ -1,5 +1,6 @@
 const awilix = require('awilix');
 
+const UserRepository = require('./repository/user');
 const TokenService = require('./services/tokenService');
 const HealthCheckController = require('./controllers/healthcheckController');
 
@@ -7,6 +8,7 @@ const container = awilix.createContainer();
 
 container.register({
   // repositories
+  userRepository: awilix.asClass(UserRepository),
 
   // services
   tokenService: awilix.asClass(TokenService),

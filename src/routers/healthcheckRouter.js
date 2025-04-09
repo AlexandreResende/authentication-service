@@ -1,9 +1,9 @@
 const express = require('express');
 
-const HealthCheckController = require('../controllers/healthcheckController');
+const container = require('../di');
 
 const healthcheckRouter = express.Router();
 
-healthcheckRouter.get('/health-check', new HealthCheckController().check);
+healthcheckRouter.get('/health-check', container.resolve('healthCheckController').check);
 
 module.exports = healthcheckRouter;
