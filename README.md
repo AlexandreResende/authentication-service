@@ -21,3 +21,11 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 - sqlite3
 - Prisma ORM
 - JWT tokens
+
+## Adding Prisma ORM to project
+
+- npx prisma init --datasource-provider sqlite --output ./  
+- after creating the schema run the migrations  
+  - npx prisma migrate dev --name init  
+- to generate the prisma client run the following command
+  - npx prisma generate
