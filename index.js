@@ -1,3 +1,5 @@
+require('reflect-metadata');
+require('./src/di');
 const express = require('express');
 
 const { PORT } = require('./src/environments');
