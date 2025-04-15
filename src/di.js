@@ -1,6 +1,6 @@
 const awilix = require('awilix');
 
-const UserRepository = require('./repository/user');
+const UserRepository = require('./repository/userRepository');
 const TokenService = require('./services/tokenService');
 const HealthCheckController = require('./controllers/healthcheckController');
 

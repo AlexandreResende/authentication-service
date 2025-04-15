@@ -6,6 +6,10 @@ const ENVIRONMENT = {
     SECRET: process.env.TOKEN_SECRET || 'abc123',
     EXPIRATION_TIME: 3600 // 1 hour
   },
+  CRYPTOGRAPHY: {
+    SECRET: process.env.CRYPTO_SECRET,
+    IV: process.env.IV,
+  }
 };
 
 module.exports = ENVIRONMENT;
