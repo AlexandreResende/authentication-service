@@ -8,6 +8,8 @@ const authenticationRouter = require('./src/routers/authenticationRouter');
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 app.use('', healthcheckRouter);
 app.use('', authenticationRouter);
 
