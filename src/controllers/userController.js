@@ -12,7 +12,7 @@ class UserController {
       return res.status(409).json({ message: result.error.message });
     }
 
-    return res.status(201).json();
+    return res.status(201).json({ ...result.user });
   }
 }
 

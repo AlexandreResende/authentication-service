@@ -17,9 +17,7 @@ class UserRegistrationCommand {
       createdAt: Date.now(),
     });
 
-    console.log(user.toJson());
-
-    return { message: 'Success' };
+    return { message: 'Success', user };
   }
 }
 
