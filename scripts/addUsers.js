@@ -15,8 +15,6 @@ const generateUsers = async () => {
       updatedAt: null
     };
 
-    console.log('adding user data', JSON.stringify(userData));
-
     await client.user.create({
       data: userData
     });
