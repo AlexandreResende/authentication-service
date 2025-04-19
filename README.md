@@ -14,6 +14,7 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 - add scope/remove scope from user
 - remove user
 - generate access token and refresh token
+- refresh the access token
 
 ## What is being used
 
