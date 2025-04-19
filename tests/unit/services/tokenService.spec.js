@@ -41,8 +41,9 @@ describe('Token service', function() {
         age: faker.number.int({ min: 18, max: 99 }),
         category: 'user',
       };
+      const expiration = faker.number.int();
 
-      const token = tokenService.generate(data);
+      const token = tokenService.generate(data, expiration);
       const tokenData = tokenService.validate(token);
 
       expect(typeof tokenData).to.be.equal('object');
@@ -60,8 +61,63 @@ describe('Token service', function() {
         age: faker.number.int({ min: 18, max: 99 }),
         category: 'user',
       };
+      const expiration = faker.number.int();
 
-      const token = tokenService.generate(data);
+      const token = tokenService.generate(data, expiration);
+
+      expect(typeof token).to.be.equal('string');
+      expect(token.length).to.be.greaterThan(0);
+    });
+
+    it('throws an error when data is not passed', function() {
+      const tokenService = new TokenService();
+      const data = undefined;
+
+      try {
+        tokenService.generate(data)
+      } catch (err) {
+        expect(err.message).to.be.equal('payload is required');
+      }
+    });
+  });
+
+  describe('GenerateAccessToken method', function() {
+    it('generates a jwt access token', function() {
+      const tokenService = new TokenService();
+      const data = {
+        username: faker.internet.username(),
+        age: faker.number.int({ min: 18, max: 99 }),
+        category: 'user',
+      };
+
+      const token = tokenService.generateAccessToken(data);
+
+      expect(typeof token).to.be.equal('string');
+      expect(token.length).to.be.greaterThan(0);
+    });
+
+    it('throws an error when data is not passed', function() {
+      const tokenService = new TokenService();
+      const data = undefined;
+
+      try {
+        tokenService.generate(data)
+      } catch (err) {
+        expect(err.message).to.be.equal('payload is required');
+      }
+    });
+  });
+
+  describe('GenerateRefreshToken method', function() {
+    it('generates a jwt refresh token', function() {
+      const tokenService = new TokenService();
+      const data = {
+        username: faker.internet.username(),
+        age: faker.number.int({ min: 18, max: 99 }),
+        category: 'user',
+      };
+
+      const token = tokenService.generateRefreshToken(data);
 
       expect(typeof token).to.be.equal('string');
       expect(token.length).to.be.greaterThan(0);
