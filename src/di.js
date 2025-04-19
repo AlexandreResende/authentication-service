@@ -6,6 +6,7 @@ const CryptographyService = require('./services/cryptographyService');
 const HealthCheckController = require('./controllers/healthcheckController');
 const UserController = require('./controllers/userController');
 const UserRegistrationCommand = require('./commands/userRegistrationCommand');
+const LoginCommand = require('./commands/loginCommand');
 
 const container = awilix.createContainer();
 
@@ -19,6 +20,7 @@ container.register({
 
   // commands
   userRegistrationCommand: awilix.asClass(UserRegistrationCommand),
+  loginCommand: awilix.asClass(LoginCommand),
 
   // controllers
   healthCheckController: awilix.asClass(HealthCheckController),

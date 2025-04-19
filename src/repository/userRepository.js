@@ -11,6 +11,14 @@ class UserRepository {
     return this.client.user.findMany();
   }
 
+  async findByEmail(email) {
+  const user = await this.client.user.findFirst({ where: { email } });
+
+    if (!user) return null;
+
+    return User.toEntity(user);
+  }
+
   async findByUsernameAndEmail(username, email) {
     return this.client.user.findFirst({
       where: {

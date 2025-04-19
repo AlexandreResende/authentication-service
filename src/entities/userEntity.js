@@ -24,6 +24,10 @@ class User {
       updatedAt: this.updatedAt,
     }
   }
+
+  getPassword = () => {
+    return this.password;
+  }
 }
 
 module.exports = User;
