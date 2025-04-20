@@ -5,6 +5,7 @@ const userEntityFactory = require('../../../mocks/UserEntityFactory');
 const UserRepository = require('../../../../src/repository/userRepository');
 const CryptographyService = require('../../../../src/services/cryptographyService');
 const UserRegistrationCommand = require('../../../../src/commands/userRegistrationCommand');
+const ERRORS = require('../../../../src/enums/errors');
 
 describe('Unit test', function() {
   describe('userRegistrationCommand', function() {
@@ -59,9 +60,12 @@ describe('Unit test', function() {
 
       const command = new UserRegistrationCommand({ userRepository });
 
-      const result = await command.execute(userData);
-
-      expect(result.error.message).to.be.equal('Username or email already exist');
+      try {
+        await command.execute(userData);
+      } catch (err) {
+        expect(err.errorCode).to.be.equal(ERRORS.USER_ALREADY_EXISTS);
+        expect(err.message).to.be.equal('Username or email already exist');
+      }
     });
 
     it('returns an error message when email already exists', async () => {
@@ -82,9 +86,12 @@ describe('Unit test', function() {
 
       const command = new UserRegistrationCommand({ userRepository });
 
-      const result = await command.execute(userData);
-
-      expect(result.error.message).to.be.equal('Username or email already exist');
+      try {
+        await command.execute(userData);
+      } catch (err) {
+        expect(err.errorCode).to.be.equal(ERRORS.USER_ALREADY_EXISTS);
+        expect(err.message).to.be.equal('Username or email already exist');
+      }
     });
   });
 });

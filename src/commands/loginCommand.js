@@ -1,3 +1,6 @@
+const ERRORS = require('../enums/errors');
+const ApplicationError = require('../applicationError');
+
 class LoginCommand {
   constructor({ userRepository, cryptographyService, tokenService }) {
     this.userRepository = userRepository;
@@ -9,10 +12,10 @@ class LoginCommand {
     const user = await this.userRepository.findByEmail(parameters.email);
 
     if (!user)
-      return { error: { message: 'User not found' } };
+      throw new ApplicationError(ERRORS.NOT_FOUND, 'User not found');
 
     if (this.cryptographyService.cipher(parameters.password) !== user.getPassword()) 
-      return { error: { message: 'Invalid email or password' } };
+      throw new ApplicationError(ERRORS.INVALID_PASSWORD, 'Invalid email or password');
 
     const accessToken = this.tokenService.generateAccessToken({ id: user.id, username: user.username, fullName: user.fullName });
     const refreshToken = this.tokenService.generateRefreshToken({ id: user.id, username: user.username, fullName: user.fullName });

@@ -4,7 +4,8 @@ const UserRepository = require('./repository/userRepository');
 const TokenService = require('./services/tokenService');
 const CryptographyService = require('./services/cryptographyService');
 const HealthCheckController = require('./controllers/healthcheckController');
-const UserController = require('./controllers/userController');
+const UserRegistrationController = require('./controllers/user/userRegistrationController');
+const LoginController = require('./controllers/user/loginController');
 const UserRegistrationCommand = require('./commands/userRegistrationCommand');
 const LoginCommand = require('./commands/loginCommand');
 
@@ -24,7 +25,8 @@ container.register({
 
   // controllers
   healthCheckController: awilix.asClass(HealthCheckController),
-  userController: awilix.asClass(UserController),
+  userRegistrationController: awilix.asClass(UserRegistrationController),
+  loginController: awilix.asClass(LoginController),
 });
 
 module.exports = container;

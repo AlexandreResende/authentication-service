@@ -1,3 +1,6 @@
+const ERRORS = require("../enums/errors");
+const ApplicationError = require("../applicationError");
+
 class UserRegistrationCommand {
   constructor({ userRepository, cryptographyService }) {
     this.userRepository = userRepository;
@@ -7,9 +10,8 @@ class UserRegistrationCommand {
   execute = async(parameters) => {
     let user = await this.userRepository.findByUsernameAndEmail(parameters.username, parameters.email);
 
-    if (user) {
-      return { error: { message: 'Username or email already exist' } };
-    }
+    if (user) 
+      throw new ApplicationError(ERRORS.USER_ALREADY_EXISTS, 'Username or email already exist')
 
     user = await this.userRepository.create({
       ...parameters,

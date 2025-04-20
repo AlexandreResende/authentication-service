@@ -6,6 +6,7 @@ const UserRepository = require('../../../../src/repository/userRepository');
 const CryptographyService = require('../../../../src/services/cryptographyService');
 const LoginCommand = require('../../../../src/commands/loginCommand');
 const TokenService = require('../../../../src/services/tokenService');
+const ERRORS = require('../../../../src/enums/errors');
 
 describe('Unit test', function() {
   describe('userRegistrationCommand', function() {
@@ -50,9 +51,12 @@ describe('Unit test', function() {
 
       const command = new LoginCommand({ userRepository, cryptographyService, tokenService });
 
-      const result = await command.execute(userData);
-
-      expect(result.error.message).to.be.equal('User not found');
+      try {
+        await command.execute(userData);
+      } catch (err) {
+        expect(err.errorCode).to.be.equal(ERRORS.NOT_FOUND);
+        expect(err.message).to.be.equal('User not found');
+      }
     });
 
     it('returns an access token and refresh token', async () => {
@@ -70,9 +74,12 @@ describe('Unit test', function() {
 
       const command = new LoginCommand({ userRepository, cryptographyService, tokenService });
 
-      const result = await command.execute(userData);
-
-      expect(result.error.message).to.be.equal('Invalid email or password');
+      try {
+        await command.execute(userData);
+      } catch (err) {
+        expect(err.errorCode).to.be.equal(ERRORS.INVALID_PASSWORD);
+        expect(err.message).to.be.equal('Invalid email or password');
+      }
     });
   });
 });
