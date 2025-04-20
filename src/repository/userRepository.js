@@ -35,6 +35,10 @@ class UserRepository {
     
     return User.toEntity(user);
   }
+
+  async update(userId, userData) {
+    await this.client.user.update({ where: {id: userId }, data: userData });
+  }
 }
 
 module.exports = UserRepository;

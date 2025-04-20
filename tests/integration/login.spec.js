@@ -71,7 +71,6 @@ describe('Integration test', function() {
         email: faker.internet.email(),
         password: faker.internet.password(),
       };
-      const encryptedPassword = new CryptographyService().cipher(userData.password);
       const userEntity = userEntityFactory({
         ...userData,
         fullName: faker.person.fullName,

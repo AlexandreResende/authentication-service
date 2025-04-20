@@ -9,13 +9,14 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 
 - user control
 - cryptography on password - DONE
-- update password
+- update password - DONE
 - application scope on token generation
 - add scope/remove scope from user
 - remove user
 - generate access token and refresh token - DONE
 - refresh the access token
-- create a error middleware to handle responses status code (throw new Error(NOT_FOUND)) -> statusCode 404 - message to be sent to middleware
+- create a error middleware to handle responses status code (throw new Error(NOT_FOUND)) - DONE
+- add input validation
 
 - revoke refresh token
   - this will be implemented by adding a sessionId inside the jwt access and refresh token. This way if the user's token  
