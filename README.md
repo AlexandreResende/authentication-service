@@ -10,12 +10,12 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 - user control
 - cryptography on password - DONE
 - update password - DONE
-- application scope on token generation
-- add scope/remove scope from user
-- remove user
 - generate access token and refresh token - DONE
-- refresh the access token
 - create a error middleware to handle responses status code (throw new Error(NOT_FOUND)) - DONE
+- remove user - DONE
+- add scope/remove scope from user
+- application scope on token generation
+- refresh the access token - /refresh endpoint
 - add input validation
 
 - revoke refresh token

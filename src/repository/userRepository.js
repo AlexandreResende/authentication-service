@@ -37,7 +37,11 @@ class UserRepository {
   }
 
   async update(userId, userData) {
-    await this.client.user.update({ where: {id: userId }, data: userData });
+    await this.client.user.update({ where: { id: userId }, data: userData });
+  }
+
+  async delete(userId) {
+    await this.client.user.delete({ where: { id: userId } });
   }
 }
 
