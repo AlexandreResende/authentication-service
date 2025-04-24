@@ -37,3 +37,9 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
   - npx prisma migrate dev --name init  
 - to generate the prisma client run the following command
   - npx prisma generate
+
+## Notes
+
+- sqlite does not support scalar lists. Because of that the `scopes` field inside the user model  
+  will be typed as a string and inside the Entity it will be converted into an array of strings.  
+  Scalar lists are only supported on DBs that natively support it, like Postgresql.

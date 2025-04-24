@@ -17,6 +17,7 @@ model User {
   username String
   email String
   password String
+  scopes String @default("")
   createdAt BigInt
   updatedAt BigInt?
 }
