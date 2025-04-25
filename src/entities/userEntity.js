@@ -5,6 +5,7 @@ class User {
     this.username = userData.username;
     this.email = userData.email;
     this.password = userData.password;
+    this.scopes = userData.scopes.split(',');
     this.createdAt = userData.createdAt;
     this.updatedAt = userData.updatedAt;
   }
@@ -20,6 +21,7 @@ class User {
       username: this.username,
       email: this.email,
       password: this.password,
+      scopes: this.scopes,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     }
