@@ -11,8 +11,16 @@ class UserRepository {
     return this.client.user.findMany();
   }
 
+  async findById(userId) {
+    const user = await this.client.user.findUnique({ where: { id: userId } });
+
+    if (!user) return null;
+
+    return User.toEntity(user);
+  }
+
   async findByEmail(email) {
-  const user = await this.client.user.findFirst({ where: { email } });
+    const user = await this.client.user.findFirst({ where: { email } });
 
     if (!user) return null;
 
@@ -34,6 +42,12 @@ class UserRepository {
     const user = await this.client.user.create({ data: userData });
     
     return User.toEntity(user);
+  }
+
+  async updateScopes(userId, scopes) {
+    const scopesToString = scopes.join();
+
+    await this.update(userId, { scopes: scopesToString });
   }
 
   async update(userId, userData) {

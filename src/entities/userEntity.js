@@ -5,9 +5,9 @@ class User {
     this.username = userData.username;
     this.email = userData.email;
     this.password = userData.password;
-    this.scopes = userData.scopes.split(',');
-    this.createdAt = userData.createdAt;
-    this.updatedAt = userData.updatedAt;
+    this.scopes = userData.scopes === '' ? [] : userData.scopes.split(',');
+    this.createdAt = Number(userData.createdAt);
+    this.updatedAt = Number(userData.updatedAt);
   }
 
   static toEntity = (userData) => {
@@ -25,6 +25,12 @@ class User {
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     }
+  }
+
+  addScopes = (scopes) => {
+    this.scopes = this.scopes.concat(scopes);
+
+    return this.scopes;
   }
 
   getPassword = () => {
