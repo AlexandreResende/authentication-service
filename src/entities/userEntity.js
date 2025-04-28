@@ -33,6 +33,16 @@ class User {
     return this.scopes;
   }
 
+  removeScopes = (scopes) => {
+    for (let scope of scopes) {
+      const index = this.scopes.indexOf(scope);
+
+      if (index !== -1) this.scopes.splice(index, 1);
+    }
+
+    return this.scopes;
+  }
+
   getPassword = () => {
     return this.password;
   }

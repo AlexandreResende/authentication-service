@@ -9,6 +9,7 @@ userRouter.post('/users/register', errorHandler(container.resolve('userRegistrat
 userRouter.get('/users/login', errorHandler(container.resolve('loginController')));
 userRouter.patch('/users/:id', errorHandler(container.resolve('updatePasswordController')));
 userRouter.patch('/users/scopes/:id', errorHandler(container.resolve('addScopesController')));
+userRouter.patch('/users/scopes/remove/:id', errorHandler(container.resolve('removeScopesController')));
 userRouter.delete('/users/:id', errorHandler(container.resolve('deleteUserController')));
 
 module.exports = userRouter;
