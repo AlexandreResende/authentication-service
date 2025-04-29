@@ -17,8 +17,18 @@ class LoginCommand {
     if (this.cryptographyService.cipher(parameters.password) !== user.getPassword()) 
       throw new ApplicationError(ERRORS.INVALID_PASSWORD, 'Invalid email or password');
 
-    const accessToken = this.tokenService.generateAccessToken({ id: user.id, username: user.username, fullName: user.fullName });
-    const refreshToken = this.tokenService.generateRefreshToken({ id: user.id, username: user.username, fullName: user.fullName });
+    const accessToken = this.tokenService.generateAccessToken({
+      id: user.id,
+      username: user.username,
+      fullName: user.fullName,
+      scopes: user.scopes,
+    });
+    const refreshToken = this.tokenService.generateRefreshToken({
+      id: user.id,
+      username: user.username,
+      fullName: user.fullName,
+      scopes: user.scopes,
+    });
 
     return { message: 'Success', access_token: accessToken, refresh_token: refreshToken };
   }

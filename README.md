@@ -14,8 +14,8 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 - create a error middleware to handle responses status code (throw new Error(NOT_FOUND)) - DONE
 - remove user - DONE
 - add scope to user - DONE (pending an enum of scopes and validate the incoming scopes)
-- remove scope from user
-- application scope on token generation
+- remove scope from user - DONE
+- add scopes on token generation - DONE
 - refresh the access token - /refresh endpoint
 - add input validation
 

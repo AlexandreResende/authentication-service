@@ -11,11 +11,7 @@ class RemoveScopesCommand {
     if (!user) 
       return { error: { message: 'User not found' } };
 
-    console.log(user);
-
     const updatedScopes = user.removeScopes(scopes);
-
-    console.log(user);
 
     await this.userRepository.updateScopes(userId, updatedScopes);
 
