@@ -1,3 +1,5 @@
+const SCOPES = require('../../enums/scopes');
+
 class AddScopesController {
   constructor({ addScopesCommand }) {
     this.addScopesCommand = addScopesCommand;
@@ -6,6 +8,17 @@ class AddScopesController {
   handleRequest = async (req, res) => {
     const userId = parseInt(req.params.id);
     const scopes = req.body.scopes;
+
+    const invalidScopes = [];
+
+    for (let scope of scopes) {
+      if (Object.values(SCOPES).indexOf(scope) === -1)
+        invalidScopes.push(scope);
+    }
+
+    if (invalidScopes.length > 0) {
+      return res.status(400).json({ message: 'Invalid scopes', scopes: invalidScopes });
+    }
 
     const result = await this.addScopesCommand.execute({ userId, scopes });
 
