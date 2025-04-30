@@ -1,3 +1,10 @@
+const Joi = require('joi');
+
+const schema = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+});
+
 class LoginController {
   constructor({ userRegistrationCommand, loginCommand }) {
     this.userRegistrationCommand = userRegistrationCommand;
@@ -6,6 +13,15 @@ class LoginController {
 
   handleRequest = async (req, res) => {
     const { email, password } = req.body;
+
+    const validationResult = schema.validate({ email, password }, { abortEarly: false });
+    if (validationResult.error) {
+      const errors = validationResult.error.details.map(errorDetail => {
+        return errorDetail.message;
+      });
+
+      return res.status(400).json({ message: errors });
+    }
 
     const result = await this.loginCommand.execute({ email, password });
 

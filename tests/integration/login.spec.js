@@ -45,6 +45,61 @@ describe('Integration test', function() {
         });
     });
 
+    it('returns an bad request when email is not a valid email', function(done) {
+      const userData =  {
+        email: faker.lorem.word(),
+        password: faker.internet.password(),
+      };
+
+      request
+        .agent(app)
+        .get('/users/login')
+        .send(userData)
+        .expect(400)
+        .end((err, res) => {
+
+          expect(err).to.be.equal(null);
+          expect(res.body.message).to.be.deep.equal(["\"email\" must be a valid email"]);
+
+          done();
+        });
+    });
+
+    it('returns an bad request when password is not a string', function(done) {
+      const userData =  {
+        email: faker.internet.email(),
+        password: faker.number.int(),
+      };
+
+      request
+        .agent(app)
+        .get('/users/login')
+        .send(userData)
+        .expect(400)
+        .end((err, res) => {
+
+          expect(err).to.be.equal(null);
+          expect(res.body.message).to.be.deep.equal(["\"password\" must be a string"]);
+
+          done();
+        });
+    });
+
+    it('returns an bad request when email and password are not passed', function(done) {
+      request
+        .agent(app)
+        .get('/users/login')
+        .send({})
+        .expect(400)
+        .end((err, res) => {
+
+          expect(err).to.be.equal(null);
+          expect(res.body.message).to.be.deep.equal(["\"email\" is required", "\"password\" is required"]);
+
+          done();
+        });
+    });
+
     it('returns a not found when user does not exist', function(done) {
       const userData =  {
         email: faker.internet.email(),
