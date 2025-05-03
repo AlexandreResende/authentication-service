@@ -30,5 +30,25 @@ describe('Integration test', function() {
           done();
         });
     });
+
+    it('throws a bad request when password is not a string', function(done) {
+      const id = faker.number.int({ min: 1 });
+      const password = faker.number.int({ min: 1 });
+
+      sinon.stub(UserRepository.prototype, 'update').resolves();
+
+      request
+        .agent(app)
+        .patch(`/users/${id}`)
+        .send({ password })
+        .expect(400)
+        .end((err, res) => {
+
+          expect(err).to.be.equal(null);
+          expect(res.body.message).to.be.deep.equal(["\"password\" must be a string"]);
+
+          done();
+        });
+    });
   });
 });
