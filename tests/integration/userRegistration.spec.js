@@ -45,6 +45,27 @@ describe('Integration test', function() {
       });
     });
 
+    it('return a bad request error when body contains missing fields', function(done) {
+      const userData =  {
+        fullName: faker.person.fullName(),
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+      };
+
+      request
+      .agent(app)
+      .post('/users/register')
+      .send(userData)
+      .expect(400)
+      .end((err, res) => {
+
+        expect(err).to.be.equal(null);
+        expect(res.body.message).to.be.deep.equal(["\"username\" is required"]);
+
+        done();
+      });
+    });
+
     it('returns a conflict when username already exists', function(done) {
       const userData =  {
         fullName: faker.person.fullName(),
