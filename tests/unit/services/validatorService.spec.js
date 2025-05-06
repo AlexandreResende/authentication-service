@@ -20,5 +20,19 @@ describe('Unit test', function() {
 
       expect(result).to.be.deep.equal([]);
     });
+
+    it('returns an array with validation errors', function() {
+      const validatorService = new ValidatorService();
+      const schema = Joi.object({
+        email: Joi.string().email().required()
+      });
+      const input = {
+        email: faker.person.fullName(),
+      };
+
+      const result = validatorService.validate(input, schema);
+
+      expect(result).to.be.deep.equal(["\"email\" must be a valid email"]);
+    });
   });
 });
