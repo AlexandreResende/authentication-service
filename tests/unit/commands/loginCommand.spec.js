@@ -1,12 +1,12 @@
 const { faker } = require('@faker-js/faker');
 const sinon = require('sinon');
 
-const userEntityFactory = require('../../../mocks/UserEntityFactory');
-const UserRepository = require('../../../../src/repository/userRepository');
-const CryptographyService = require('../../../../src/services/cryptographyService');
-const LoginCommand = require('../../../../src/commands/loginCommand');
-const TokenService = require('../../../../src/services/tokenService');
-const ERRORS = require('../../../../src/enums/errors');
+const userEntityFactory = require('../../mocks/UserEntityFactory');
+const UserRepository = require('../../../src/repository/userRepository');
+const CryptographyService = require('../../../src/services/cryptographyService');
+const LoginCommand = require('../../../src/commands/loginCommand');
+const TokenService = require('../../../src/services/tokenService');
+const ERRORS = require('../../../src/enums/errors');
 
 describe('Unit test', function() {
   describe('userRegistrationCommand', function() {

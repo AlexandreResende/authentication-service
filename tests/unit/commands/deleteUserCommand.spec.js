@@ -1,8 +1,8 @@
 const { faker } = require('@faker-js/faker');
 const sinon = require('sinon');
 
-const UserRepository = require('../../../../src/repository/userRepository');
-const DeleteUserCommand = require('../../../../src/commands/deleteUserCommand');
+const UserRepository = require('../../../src/repository/userRepository');
+const DeleteUserCommand = require('../../../src/commands/deleteUserCommand');
 
 describe('Unit test', function() {
   describe('DeleteUserCommand', function() {

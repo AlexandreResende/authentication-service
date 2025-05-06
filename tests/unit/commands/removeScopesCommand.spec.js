@@ -1,9 +1,9 @@
 const { faker } = require('@faker-js/faker');
 const sinon = require('sinon');
 
-const RemoveScopesCommand = require('../../../../src/commands/addScopesCommand');
-const UserRepository = require('../../../../src/repository/userRepository');
-const userEntityFactory = require('../../../mocks/UserEntityFactory');
+const RemoveScopesCommand = require('../../../src/commands/addScopesCommand');
+const UserRepository = require('../../../src/repository/userRepository');
+const userEntityFactory = require('../../mocks/UserEntityFactory');
 
 describe('Unit test', function() {
   describe('RemoveScopesCommand', function() {

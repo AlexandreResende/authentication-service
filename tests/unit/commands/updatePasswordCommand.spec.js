@@ -1,9 +1,9 @@
 const { faker } = require('@faker-js/faker');
 const sinon = require('sinon');
 
-const UpdatePasswordCommand = require('../../../../src/commands/updatePasswordCommand');
-const UserRepository = require('../../../../src/repository/userRepository');
-const CryptographyService = require('../../../../src/services/cryptographyService');
+const UpdatePasswordCommand = require('../../../src/commands/updatePasswordCommand');
+const UserRepository = require('../../../src/repository/userRepository');
+const CryptographyService = require('../../../src/services/cryptographyService');
 
 describe('Unit test', function() {
   describe('UpdatePasswordCommand', function() {
