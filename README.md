@@ -16,8 +16,8 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 - add scope to user - DONE (pending an enum of scopes and validate the incoming scopes)
 - remove scope from user - DONE
 - add scopes on token generation - DONE
+- add input validation - create validator class  that will receive the input and a Joi schema to be processed - DONE
 - refresh the access token - /refresh endpoint
-- add input validation - create validator class  that will receive the input and a Joi schema to be processed
 
 - revoke refresh token
   - this will be implemented by adding a sessionId inside the jwt access and refresh token. This way if the user's token  
