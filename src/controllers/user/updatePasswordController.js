@@ -5,21 +5,18 @@ const schema = Joi.object({
 });
 
 class UpdatePasswordController {
-  constructor({ updatePasswordCommand }) {
+  constructor({ updatePasswordCommand, validatorService }) {
     this.updatePasswordCommand = updatePasswordCommand;
+    this.validatorService = validatorService;
   }
 
   handleRequest = async (req, res) => {
     const id = parseInt(req.params.id);
     const password = req.body.password;
 
-    const validationResult = schema.validate({ password }, { abortEarly: false });
-    if (validationResult.error) {
-      const errors = validationResult.error.details.map(errorDetail => {
-        return errorDetail.message;
-      });
-
-      return res.status(400).json({ message: errors });
+    const validationResult = this.validatorService.validate(req.body, schema);
+    if (validationResult.length > 0) {
+      return res.status(400).json({ message: validationResult });
     }
 
     await this.updatePasswordCommand.execute({ id, password });

@@ -16,6 +16,7 @@ const UpdatePasswordCommand = require('./commands/updatePasswordCommand');
 const LoginCommand = require('./commands/loginCommand');
 const AddScopesCommand = require('./commands/addScopesCommand');
 const RemoveScopesCommand = require('./commands/removeScopesCommand');
+const ValidatorService = require('./services/validatorService');
 
 const container = awilix.createContainer();
 
@@ -26,6 +27,7 @@ container.register({
   // services
   tokenService: awilix.asClass(TokenService),
   cryptographyService: awilix.asClass(CryptographyService),
+  validatorService: awilix.asClass(ValidatorService),
 
   // commands
   userRegistrationCommand: awilix.asClass(UserRegistrationCommand),

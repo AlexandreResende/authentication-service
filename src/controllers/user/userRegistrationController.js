@@ -8,21 +8,18 @@ const schema = Joi.object({
 });
 
 class UserRegistrationController {
-  constructor({ userRegistrationCommand, loginCommand }) {
+  constructor({ userRegistrationCommand, loginCommand, validatorService }) {
     this.userRegistrationCommand = userRegistrationCommand;
     this.loginCommand = loginCommand;
+    this.validatorService = validatorService;
   }
 
   handleRequest = async (req, res) => {
     const userData = req.body;
 
-    const validationResult = schema.validate(userData, { abortEarly: false });
-    if (validationResult.error) {
-      const errors = validationResult.error.details.map(errorDetail => {
-        return errorDetail.message;
-      });
-
-      return res.status(400).json({ message: errors });
+    const validationResult = this.validatorService.validate(req.body, schema);
+    if (validationResult.length > 0) {
+      return res.status(400).json({ message: validationResult });
     }
 
     const result = await this.userRegistrationCommand.execute(userData);
