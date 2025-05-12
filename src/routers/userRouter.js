@@ -11,5 +11,6 @@ userRouter.patch('/users/:id', errorHandler(container.resolve('updatePasswordCon
 userRouter.patch('/users/scopes/:id', errorHandler(container.resolve('addScopesController')));
 userRouter.patch('/users/scopes/remove/:id', errorHandler(container.resolve('removeScopesController')));
 userRouter.delete('/users/:id', errorHandler(container.resolve('deleteUserController')));
+userRouter.post('/refresh', errorHandler(container.resolve('renewAccessTokenController')));
 
 module.exports = userRouter;
