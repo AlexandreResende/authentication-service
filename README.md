@@ -19,10 +19,11 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 - add input validation - create validator class  that will receive the input and a Joi schema to be processed - DONE
 - refresh the access token - /refresh endpoint - DONE
 
-- revoke refresh token - to be implemented
-  - this will be implemented by adding a sessionId inside the jwt access and refresh token. This way if the user's token  
-  gets revoked, it will need to change the session (log out and login again) and send a new sessionId to generate the tokens  
-  a blacklist table will be created that will store all the sessionIds and check it when necessary (this will be changed to redis in the future)  
+- stack trace being logged on tokenService when a token error occurs. Can we handle that to avoid this being logged?
+
+#### Admin Features
+
+- We could implement admin operations like to revoke a user's refresh token (remove it from record)
 
 ## What is being used
 
