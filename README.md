@@ -23,7 +23,7 @@ this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the t
 
 #### Admin Features
 
-- We could implement admin operations like to revoke a user's refresh token (remove it from record)
+- We could implement admin operations like to revoke a user's refresh token (remove it from record) - TBD
 
 ## What is being used
 
