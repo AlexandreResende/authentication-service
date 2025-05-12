@@ -30,6 +30,8 @@ class LoginCommand {
       scopes: user.scopes,
     });
 
+    await this.userRepository.update(user.id, { refreshToken });
+
     return { message: 'Success', access_token: accessToken, refresh_token: refreshToken };
   }
 }

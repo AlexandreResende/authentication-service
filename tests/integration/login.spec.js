@@ -29,6 +29,7 @@ describe('Integration test', function() {
       });
 
       sinon.stub(UserRepository.prototype, 'findByEmail').resolves(userEntity);
+      sinon.stub(UserRepository.prototype, 'update').resolves();
 
       request
         .agent(app)

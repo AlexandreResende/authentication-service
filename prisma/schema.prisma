@@ -18,7 +18,7 @@ model User {
   email String
   password String
   scopes String @default("")
-  refreshToken String
+  refreshToken String?
   createdAt BigInt
   updatedAt BigInt?
 }

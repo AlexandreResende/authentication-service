@@ -31,6 +31,7 @@ describe('Unit test', function() {
         createdAt: Date.now(),
         updatedAt: null
       }));
+      sinon.stub(userRepository, 'update').resolves();
 
       const command = new LoginCommand({ userRepository, cryptographyService, tokenService });
 

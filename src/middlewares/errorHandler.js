@@ -13,6 +13,7 @@ const errorHandler = (controller) => async (req, res, next) => {
 
     next();
   } catch (err) {
+    console.log(err);
     const errorCode = err.errorCode;
     const statusCode = errorToStatusCode[errorCode] ?? 500;
 
