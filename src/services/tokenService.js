@@ -22,6 +22,10 @@ class TokenService {
     return token;
   }
 
+  verify(token) {
+    return jwt.verify(token, TOKEN.SECRET);
+  }
+
   generateAccessToken(data) {
     return this.generate(data, TOKEN.ACCESS_TOKEN_EXPIRATION_TIME);
   }

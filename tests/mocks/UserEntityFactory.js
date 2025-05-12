@@ -10,6 +10,7 @@ const userEntityFactory = (userData) => {
     email: faker.internet.email(),
     password: faker.internet.password(),
     scopes: '',
+    refreshToken: undefined,
     createdAt: Date.now(),
     updatedAt: null,
   };

@@ -6,6 +6,7 @@ class User {
     this.email = userData.email;
     this.password = userData.password;
     this.scopes = userData.scopes === '' ? [] : userData.scopes.split(',');
+    this.refreshToken = userData.refreshToken;
     this.createdAt = Number(userData.createdAt);
     this.updatedAt = Number(userData.updatedAt);
   }
@@ -22,6 +23,7 @@ class User {
       email: this.email,
       password: this.password,
       scopes: this.scopes,
+      refreshToken: this.refreshToken,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
     }
@@ -45,6 +47,10 @@ class User {
 
   getPassword = () => {
     return this.password;
+  }
+
+  matchRefreshToken(refreshToken) {
+    return this.refreshToken === refreshToken;
   }
 }
 

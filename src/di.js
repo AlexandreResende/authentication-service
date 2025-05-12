@@ -9,6 +9,7 @@ const DeleteUserController = require('./controllers/user/deleteUserController');
 const UpdatePasswordController = require('./controllers/user/updatePasswordController');
 const AddScopesController = require('./controllers/user/addScopesController');
 const RemoveScopesController = require('./controllers/user/removeScopesController');
+const RenewAccessTokenController = require('./controllers/user/renewAccessTokenController');
 const LoginController = require('./controllers/user/loginController');
 const UserRegistrationCommand = require('./commands/userRegistrationCommand');
 const DeleteUserCommand = require('./commands/deleteUserCommand');
@@ -16,6 +17,7 @@ const UpdatePasswordCommand = require('./commands/updatePasswordCommand');
 const LoginCommand = require('./commands/loginCommand');
 const AddScopesCommand = require('./commands/addScopesCommand');
 const RemoveScopesCommand = require('./commands/removeScopesCommand');
+const RenewAccessTokenCommand = require('./commands/renewAccessTokenCommand');
 const ValidatorService = require('./services/validatorService');
 
 const container = awilix.createContainer();
@@ -36,6 +38,7 @@ container.register({
   deleteUserCommand: awilix.asClass(DeleteUserCommand),
   addScopesCommand: awilix.asClass(AddScopesCommand),
   removeScopesCommand: awilix.asClass(RemoveScopesCommand),
+  renewAccessTokenCommand: awilix.asClass(RenewAccessTokenCommand),
 
   // controllers
   healthCheckController: awilix.asClass(HealthCheckController),
@@ -45,6 +48,7 @@ container.register({
   deleteUserController: awilix.asClass(DeleteUserController),
   addScopesController: awilix.asClass(AddScopesController),
   removeScopesController: awilix.asClass(RemoveScopesController),
+  renewAccessTokenController: awilix.asClass(RenewAccessTokenController),
 });
 
 module.exports = container;

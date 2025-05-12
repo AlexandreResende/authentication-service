@@ -4,6 +4,7 @@ const errorToStatusCode = {
   [ERRORS.NOT_FOUND]: 404,
   [ERRORS.INVALID_PASSWORD]: 409,
   [ERRORS.USER_ALREADY_EXISTS]: 409,
+  [ERRORS.GENERAL_ERROR]: 500,
 };
 
 const errorHandler = (controller) => async (req, res, next) => {
