@@ -1,7 +1,8 @@
 require('./src/di');
 const express = require('express');
+const assert = require('assert');
 
-const { PORT } = require('./src/environments');
+const { PORT, CRYPTOGRAPHY } = require('./src/environments');
 
 const healthcheckRouter = require('./src/routers/healthcheckRouter');
 const userRouter = require('./src/routers/userRouter');
@@ -15,6 +16,9 @@ app.use('', healthcheckRouter);
 app.use('', userRouter);
 
 app.listen(PORT, () => {
+  assert(CRYPTOGRAPHY.IV, 'IV key from Cryptography service can not be empty.');
+  assert(CRYPTOGRAPHY.SECRET, 'Secret key from Cryptography service can not be empty.');
+  
   console.log(`Server running on port ${PORT}.`);
 });
 
