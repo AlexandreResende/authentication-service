@@ -7,7 +7,8 @@
     "start": "node index.js",
     "test": "mocha --exit",
     "script": "node scripts/addUsers.js",
-    "migration": "npx prisma migrate dev --name init"
+    "migration": "npx prisma migrate dev --name init",
+    "swagger": "node ./swagger.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,8 @@
     "chai": "^5.2.0",
     "mocha": "^11.1.0",
     "sinon": "^20.0.0",
-    "supertest": "^7.1.0"
+    "supertest": "^7.1.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   }
 }
