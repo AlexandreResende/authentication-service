@@ -5,20 +5,6 @@ jwt tokens and learn more about the process.
 We will be using this [RFC](https://datatracker.ietf.org/doc/html/rfc7519) as a reference and also
 this npm [library](https://www.npmjs.com/package/jsonwebtoken) to validate the tokens accordingly  
 
-## To be implemented
-
-- user control - DONE
-- cryptography on password - DONE
-- update password - DONE
-- generate access token and refresh token - DONE
-- create a error middleware to handle responses status code (throw new Error(NOT_FOUND)) - DONE
-- remove user - DONE
-- add scope to user - DONE  
-- remove scope from user - DONE
-- add scopes on token generation - DONE
-- add input validation - create validator class  that will receive the input and a Joi schema to be processed - DONE
-- refresh the access token - /refresh endpoint - DONE
-
 #### Admin Features
 
 - We could implement admin operations like to revoke a user's refresh token (remove it from record) - TBD
