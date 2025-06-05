@@ -13,10 +13,19 @@
   "paths": {
     "/health-check": {
       "get": {
-        "description": "",
+        "description": "This endpoint checks the health of the application",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
