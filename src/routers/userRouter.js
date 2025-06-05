@@ -33,7 +33,31 @@ userRouter.post('/users/register', errorHandler(container.resolve('userRegistrat
 
   next();
 });
-userRouter.get('/users/login', errorHandler(container.resolve('loginController')));
+userRouter.get('/users/login', errorHandler(container.resolve('loginController')), (req, res, next) => {
+  /*  #swagger.start
+  
+      #swagger.path = '/users/login'
+      #swagger.method = 'get'
+      #swagger.description = 'This endpoint is responsible for creating new users'
+      #swagger.produces = ['application/json']
+      #swagger.consumes = ['application/json']
+  
+      #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'User data',
+        required: true,
+        schema: {
+          email: "alex123@gmail.com",
+          password: "batataarroz"
+        }
+      } 
+      #swagger.responses[201]
+      #swagger.responses[400]
+      #swagger.responses[409]
+      #swagger.end
+  */
+  next();
+});
 userRouter.patch('/users/:id', errorHandler(container.resolve('updatePasswordController')));
 userRouter.patch('/users/scopes/:id', errorHandler(container.resolve('addScopesController')));
 userRouter.patch('/users/scopes/remove/:id', errorHandler(container.resolve('removeScopesController')));

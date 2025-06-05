@@ -74,10 +74,43 @@
     },
     "/users/login": {
       "get": {
-        "description": "",
+        "description": "This endpoint is responsible for creating new users",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "alex123"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "batataarroz"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict"
           }
         }
       }
