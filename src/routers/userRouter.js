@@ -61,7 +61,51 @@ userRouter.get('/users/login', errorHandler(container.resolve('loginController')
 userRouter.patch('/users/:id', errorHandler(container.resolve('updatePasswordController')));
 userRouter.patch('/users/scopes/:id', errorHandler(container.resolve('addScopesController')));
 userRouter.patch('/users/scopes/remove/:id', errorHandler(container.resolve('removeScopesController')));
-userRouter.delete('/users/:id', errorHandler(container.resolve('deleteUserController')));
-userRouter.post('/refresh', errorHandler(container.resolve('renewAccessTokenController')));
+userRouter.delete('/users/:id', errorHandler(container.resolve('deleteUserController')), (req, res, next) => {
+  /*  #swagger.start
+  
+      #swagger.path = '/users/:id'
+      #swagger.method = 'delete'
+      #swagger.description = 'This endpoint is responsible for deleting users'
+      #swagger.produces = ['application/json']
+      #swagger.consumes = ['application/json']
+  
+      #swagger.parameters['id'] = {
+        in: 'path',
+        description: 'User id',
+        required: true,
+        type: 'integer'
+      } 
+
+      #swagger.responses[201]
+      #swagger.end
+  */
+
+  next();
+});
+userRouter.post('/refresh', errorHandler(container.resolve('renewAccessTokenController')), (req, res, next) => {
+  /*  #swagger.start
+  
+      #swagger.path = '/refresh'
+      #swagger.method = 'post'
+      #swagger.description = 'This endpoint is responsible for renewing the access token and refresh token'
+      #swagger.produces = ['application/json']
+      #swagger.consumes = ['application/json']
+  
+      #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Token to be sent',
+        required: true,
+        schema: {
+          token: "a_valid_jwt_token"
+        }
+      } 
+      #swagger.responses[200]
+      #swagger.responses[400]
+      #swagger.end
+  */
+
+  next();
+});
 
 module.exports = userRouter;

@@ -167,30 +167,63 @@
         }
       }
     },
-    "/users/scopes/remove/{id}": {
-      "patch": {
-        "description": "",
+    "/users/:id": {
+      "delete": {
+        "description": "This endpoint is responsible for deleting users",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "User id",
             "required": true,
-            "type": "string"
+            "type": "integer"
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Created"
           }
         }
       }
     },
     "/refresh": {
       "post": {
-        "description": "",
+        "description": "This endpoint is responsible for renewing the access token and refresh token",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Token to be sent",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "example": "a_valid_jwt_token"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
