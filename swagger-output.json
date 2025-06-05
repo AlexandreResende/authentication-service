@@ -131,8 +131,10 @@
             "description": ""
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/users/scopes/{id}": {
+      "patch": {
         "description": "",
         "parameters": [
           {
@@ -149,7 +151,7 @@
         }
       }
     },
-    "/users/scopes/{id}": {
+    "/users/scopes/remove/{id}": {
       "patch": {
         "description": "",
         "parameters": [
