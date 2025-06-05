@@ -38,7 +38,7 @@ userRouter.get('/users/login', errorHandler(container.resolve('loginController')
   
       #swagger.path = '/users/login'
       #swagger.method = 'get'
-      #swagger.description = 'This endpoint is responsible for creating new users'
+      #swagger.description = 'This endpoint is responsible for login in users'
       #swagger.produces = ['application/json']
       #swagger.consumes = ['application/json']
   
@@ -51,9 +51,9 @@ userRouter.get('/users/login', errorHandler(container.resolve('loginController')
           password: "batataarroz"
         }
       } 
-      #swagger.responses[201]
+      #swagger.responses[200]
       #swagger.responses[400]
-      #swagger.responses[409]
+      #swagger.responses[404]
       #swagger.end
   */
   next();
