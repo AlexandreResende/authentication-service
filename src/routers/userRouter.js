@@ -60,7 +60,34 @@ userRouter.get('/users/login', errorHandler(container.resolve('loginController')
 });
 userRouter.patch('/users/:id', errorHandler(container.resolve('updatePasswordController')));
 userRouter.patch('/users/scopes/:id', errorHandler(container.resolve('addScopesController')));
-userRouter.patch('/users/scopes/remove/:id', errorHandler(container.resolve('removeScopesController')));
+userRouter.patch('/users/scopes/remove/:id', errorHandler(container.resolve('removeScopesController')), (req, res, next) => {
+  /*  #swagger.start
+  
+      #swagger.path = '/users/scopes/remove/:id'
+      #swagger.method = 'patch'
+      #swagger.description = 'This endpoint is removes the scopes of a particular user'
+      #swagger.produces = ['application/json']
+      #swagger.consumes = ['application/json']
+  
+      #swagger.parameters['id'] = {
+        in: 'params',
+        description: 'User id',
+        required: true,
+        type: 'integer'
+      }
+      #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'User scopes to be removed',
+        required: true,
+        schema: {
+          scopes: ['firstScope', 'secondScope']
+        }
+      } 
+      #swagger.responses[200]
+      #swagger.responses[404]
+      #swagger.end
+  */
+});
 userRouter.delete('/users/:id', errorHandler(container.resolve('deleteUserController')), (req, res, next) => {
   /*  #swagger.start
   

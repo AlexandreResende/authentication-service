@@ -160,20 +160,51 @@
         }
       }
     },
-    "/users/scopes/remove/{id}": {
+    "/users/scopes/remove/:id": {
       "patch": {
-        "description": "",
+        "description": "This endpoint is removes the scopes of a particular user",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
-            "in": "path",
+            "in": "params",
+            "description": "User id",
             "required": true,
-            "type": "string"
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User scopes to be removed",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "scopes": {
+                  "type": "array",
+                  "example": [
+                    "firstScope",
+                    "secondScope"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
