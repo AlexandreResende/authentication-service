@@ -58,7 +58,38 @@ userRouter.get('/users/login', errorHandler(container.resolve('loginController')
   */
   next();
 });
-userRouter.patch('/users/:id', errorHandler(container.resolve('updatePasswordController')));
+userRouter.patch('/users/:id', errorHandler(container.resolve('updatePasswordController')), (req, res,next) => {
+  /*  #swagger.start
+  
+      #swagger.path = '/users/:id'
+      #swagger.method = 'patch'
+      #swagger.description = 'This endpoint updates the user password'
+      #swagger.produces = ['application/json']
+      #swagger.consumes = ['application/json']
+  
+      #swagger.parameters['id'] = {
+        in: 'params',
+        description: 'User id',
+        required: true,
+        type: 'integer'
+      }
+
+      #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'User password',
+        required: true,
+        schema: {
+          password: "batataarroz"
+        }
+      } 
+      #swagger.responses[201]
+      #swagger.responses[400]
+      #swagger.end
+  */
+
+
+  next();
+});
 userRouter.patch('/users/scopes/:id', errorHandler(container.resolve('addScopesController')), (req, res, next) => {
   /*  #swagger.start
   
