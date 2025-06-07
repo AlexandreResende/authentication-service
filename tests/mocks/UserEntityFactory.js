@@ -2,7 +2,7 @@ const { faker } = require('@faker-js/faker');
 
 const UserEntity = require('../../src/entities/userEntity');
 
-const userEntityFactory = (userData) => {
+const userEntityFactory = (userData = {}) => {
   const userMockedData = {
     id: faker.number.int({ min: 1 }),
     fullName: faker.person.fullName(),
